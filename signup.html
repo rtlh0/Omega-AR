@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"], input[type="password"], select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+
+        body.lockdown 
+        {
+            position: relative;
+            padding: 20px;
+            margin: 10px;
+            border: 5px solid black;
+            border-radius: 10px;
+            background-color: black;
+            color: red;
+        }
+
+        body.lockdown::before, body.lockdown::after {
+            content: 'LOCKDOWN';
+            position: absolute;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+            animation: flash 1s linear infinite;
+            z-index: 10;
+            background-color: black; /* Matches the background to blend with the page */
+            padding: 0 10px; /* Padding to ensure the text doesn’t touch the borders */
+        }
+
+        body.lockdown::before {
+            top: 50%;  /* Vertically align in the middle of the top border */
+            left: 0;
+            right: 0;
+            transform: translateY(-50%); /* Offset to center vertically */
+            text-align: center; /* Center the text horizontally */
+        }
+
+        body.lockdown::after {
+            bottom: 50%;  /* Vertically align in the middle of the bottom border */
+            left: 0;
+            right: 0;
+            transform: translateY(50%); /* Offset to center vertically */
+            text-align: center; /* Center the text horizontally */
+        }
+
+        @keyframes flash {
+            0% { color: red; }
+            50% { color: black; }
+            100% { color: red; }
+        }
+        </style>
+</head>
+<body>
+    <h1>Signup Form</h1>
+    <form>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="party-name">Party name:</label>
+            <input type="text" id="party-name" name="party-name" required>
+        </div>
+        <div class="form-group">
+            <label for="personal-details">Personal Details and Information:</label>
+            <textarea id="personal-details" name="personal-details" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="dark-secret">Your dark secret (stored on our servers in plain text):</label>
+            <input type="text" id="dark-secret" name="dark-secret" required>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="disclaimer" name="disclaimer" required>
+            <label for="disclaimer" style="display: inline;">
+                I agree to the following disclaimer:
+                <span style="color: red; margin-left: 5px;">
+                By signing up, you grant Particracy Omega unrestricted access to your personal data, including your dark secrets. This information will be collected, stored, and used for purposes known only to Particracy Omega, which may include sharing with third parties, targeted experimentation, and indefinite storage. You acknowledge that some of these purposes may be experimental in nature, with unknown or potentially dangerous consequences. Particracy Omega assumes no responsibility for any outcomes resulting from the use or manipulation of your data, which may be far-reaching and irreversible. You agree to hold Particracy Omega harmless in all cases, and to waive any rights to legal recourse or compensation. You also agree to receive marketing communications from Particracy Omega and its partners, which may include unsolicited messages, targeted advertising, and other forms of communication. You may opt out of these communications at any time by contacting Particracy Omega support.</span>
+                </span>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="submit-button">Submit Button Color Preference:</label>
+            <select id="submit-button" name="submit-button" required>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="red">Red</option>
+                <option value="yellow">Yellow</option>
+            </select>
+        </div>
+        <button type="submit" id="submit-btn">Submit</button>
+    </form>
+
+    <script>
+        var audio = new Audio('error.ogg');
+
+        // Form data object
+        formData = {};
+
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            //Store the form data in an object
+            formData = {
+                username: document.getElementById('username').value,
+                partyName: document.getElementById('party-name').value,
+                darkSecret: document.getElementById('dark-secret').value,
+                personalDetails: document.getElementById('personal-details').value
+            };
+
+            document.body.style.backgroundColor = 'black';
+            document.body.innerHTML = `
+                <h1 style="color: red;">Error: Omega does not exist</h1>
+                <p style="color: white;">Developer mode active: <a href="#" onclick="LaunchConsole();">click here to debug</a></p>
+            `;
+  
+            audio.play();
+        });
+
+        function LaunchConsole() 
+        {
+            // Clear the body
+            document.body.innerHTML = '';
+            
+            // Variables for the Omega OS debug console
+            var captchaSolved = false;
+            var accountAlreadyWithdrawn = false;
+            var walletBalance = 0;
+            var wouter1Bought = false;
+            var wouter2Bought = false;
+            var dolphinLiamBought = false;
+            var recievedLoyaltyMail = false;
+            var cwd = '';
+
+            // Text filename based on the user's username
+            const textFileName = formData.username + '.txt';
+
+            // Give the access levels memorable names
+            const noAccess = 0;
+            const basicAccess = 1;
+            const mailAccess = 2;
+            const bankAccess = 3;
+            const researchAccess = 4;
+            const dirAccess = 5;
+            const captchaAccess = 6;
+            const escapeAccess = 7;
+
+            // stop audio
+            audio.pause();
+            
+            // play new audio
+            audio = new Audio('audioLevel1.ogg');
+            audio.loop = true;
+            audio.play();
+
+            // Update title
+            document.title = 'Omega OS Debug Console';
+
+            // Matrix style transition
+            const matrixEffect = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                document.body.appendChild(canvas);
+
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                const letters = Array(256).join(1).split('');
+                const draw = () => {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#0F0';
+                    letters.map((y_pos, index) => {
+                        const text = String.fromCharCode(3e4 + Math.random() * 33);
+                        const x_pos = index * 10;
+                        ctx.fillText(text, x_pos, y_pos);
+                        letters[index] = y_pos > 758 + Math.random() * 1e4 ? 0 : y_pos + 10;
+                    });
+                };
+                setInterval(draw, 33);
+            };
+
+            matrixEffect();
+
+            // Wait for the matrix effect to finish before displaying the console
+            setTimeout(() => {
+                displayConsole();
+            }, 5000);
+
+            // Function to display the console
+
+            const displayConsole = () => {     
+                document.body.innerHTML = `
+                    <div style="background-color: black; color: green; font-family: monospace; height: 100vh; padding: 20px;">
+                        <h1>Omega OS Debug Command Console</h1>
+                        <p>Version 0.1.6-SNAPSHOT</p>
+                        <p style="color: red;">WARNING: This is a developer tool. Use with caution.</p>
+                        <p>Type '/run' to start session</p>
+                        <div id="console-output"></div>
+                        <input type="text" id="console-input" style="width: 100%; background-color: black; color: green; border: none; outline: none;">
+                    </div>
+                `;
+
+                const input = document.getElementById('console-input');
+                const output = document.getElementById('console-output');
+                var accessLevel = noAccess;
+
+                input.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        const command = input.value;
+                        input.value = '';
+                        output.innerHTML += `<div>> ${command}</div>`;
+                        if (command === '/run') {
+                            if (accessLevel < basicAccess) {
+                                output.innerHTML += `<p>Session started...</p>`;
+                                const username = formData.username;
+                                output.innerHTML += `<p>Welcome, ${username}</p>`;
+                                output.innerHTML += `<p>Access level: 1</p>`;
+                                output.innerHTML += `<p>Type /help for commands</p>`;
+                                output.innerHTML += `<p style="color: red">You're not supposed to be here...</p>`;
+                                accessLevel = basicAccess;
+                                return;
+                            }
+                            else {
+                                output.innerHTML += `<p>Session already started</p>`;
+                            }
+                        } 
+                        else if (command === '/help') 
+                        {
+                            output.innerHTML += `<p>Available commands:</p>`;
+                            output.innerHTML += `<p>/run - Start session</p>`;
+                            output.innerHTML += `<p>/help - Show available commands</p>`;
+                            output.innerHTML += `<p>/exit - End session</p>`;
+        
+                            if (accessLevel >= basicAccess) 
+                            {
+                                // Command for viewing internal memos with memo number
+                                output.innerHTML += `<p>/memos [memo number] - View specific memo</p>`;
+
+                                // Command for elevate the user's access level (must provide a valid code)
+                                output.innerHTML += `<p>/elevate [code] - Elevate access level with code</p>`;
+                            }
+                            if (accessLevel >= mailAccess) 
+                            {
+                                // Command for viewing user mailbox (with password)
+                                output.innerHTML += `<p>/mailbox [password] - View your mailbox</p>`;
+                            }
+                            if (accessLevel >= bankAccess) 
+                            {
+                                // Command for withdrawing money from the bank
+                                output.innerHTML += `<p>/withdraw [account name] - Withdraw Particrabucks from a bank account into your wallet</p>`;
+
+                                // Command for viewing shop items
+                                output.innerHTML += `<p>/shop [item number] - View shop item!</p>`;
+
+                                // Command for buying items from the shop
+                                output.innerHTML += `<p>/buy [item number] - Buy item from the shop</p>`;
+
+                                // Command for viewing user's wallet
+                                output.innerHTML += `<p>/wallet - View your wallet</p>`;
+
+                                // Command for viewing user's inventory
+                                output.innerHTML += `<p>/inventory - View your inventory</p>`;
+                            }
+                            if (accessLevel >= researchAccess)
+                            {
+                                // Command for viewing the research notes with note number
+                                output.innerHTML += `<p>/research [note number] - View specific research note</p>`;
+                            }
+                            if (accessLevel >= dirAccess) 
+                            {
+                                // Command for changing directory
+                                output.innerHTML += `<p>/dir cd [directory] - Change directory</p>`;
+
+                                // Command for printing the working directory
+                                output.innerHTML += `<p>/dir pwd - Print working directory</p>`;
+
+                                // Command for listing directories
+                                output.innerHTML += `<p>/dir ls - List directories</p>`;
+
+                                // Command for viewing the contents of a directory
+                                output.innerHTML += `<p>/dir view - View directory contents</p>`;
+
+                                // Command for viewing the contents of the root directory
+                                output.innerHTML += `<p>/dir / - View root directory</p>`;
+
+                                // Command for opening a file
+                                output.innerHTML += `<p>/open [file] - Open a file</p>`;
+                            }
+                            if (accessLevel >= captchaAccess) 
+                            {
+                                // Command for solving CAPTCHA
+                                output.innerHTML += `<p>/captcha [solution] - Solve the CAPTCHA</p>`;
+
+                                // Command for launching the Omega project
+                                output.innerHTML += `<p>/launch-omega - Launch the Omega project</p>`;
+                            }
+                            if (accessLevel >= escapeAccess) 
+                            {
+                                // Command for escaping Omega with the escape code
+                                output.innerHTML += `<p>/escape [code] - Escape Omega with code</p>`;
+                            }
+                        }
+                        else if (command.startsWith('/open')) 
+                        {
+                            if (accessLevel < dirAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            const file = command.split(' ')[1];
+                            if (file === textFileName) 
+                            {
+                                // Display the contents of the file
+                                output.innerHTML += `<p>Contents of ` + textFileName + `</p>`;
+                                output.innerHTML += `<p>I stumbled upon Particracy late one night. You know, that obscure online game where you run a fictional political party in a fictional world. It was supposed to be a fun way to pass the time, a harmless dive into the chaos of virtual politics. The Discord server was buzzing with debates, alliances, and rivalries. I never thought it would lead me to the darkest experience of my life.</p>`;
+                                output.innerHTML += `<p>It started small, as most things do. I created my party, ${formData.partyName}, and began to explore the intricacies of the game. I’d draft policies, negotiate with other players, and try to sway the electorate to my side. But then, one day, I noticed something odd in my Discord DMs—a message from a user named “Omega”. I hadn’t seen that name before.</p>`;
+                                output.innerHTML += `<p><strong>“Welcome to the real Particracy,”</strong> the message read. <strong>“We’ve been watching you, ${formData.username}. You have potential. Join us.”</strong></p>`;
+                                output.innerHTML += `<p>I chuckled. Someone was clearly roleplaying a bit too hard. I replied with a lighthearted, <strong>“Thanks, but I’m just here for the fun!”</strong> No response came. I shrugged it off and continued playing.</p>`;
+                                output.innerHTML += `<p>That night, as I was about to log off, my screen flickered, and a new notification appeared: <strong>“System Update: The Truth.”</strong> I didn’t remember any update announcements. I clicked it out of curiosity. The screen went black.</p>`;
+                                output.innerHTML += `<p>Then, a single line of text appeared:</p>`;
+                                output.innerHTML += `<p><strong>“Welcome to the true game, ${formData.username}.”</strong></p>`;
+                                output.innerHTML += `<p>My heart skipped a beat. I hadn’t entered my real name anywhere on the site. How did they know? The screen flickered again, and the game’s map reloaded, but it wasn’t the same. The vibrant, colorful world of Particracy had turned dark and twisted. Cities were in ruins, and the game’s cheerful music had been replaced by a low, unsettling hum.</p>`;
+                                output.innerHTML += `<p>I tried to click on my party’s headquarters, but the screen flashed with an error: <strong>“Access Denied: Reality Unverified.”</strong> What the hell did that mean?</p>`;
+                                output.innerHTML += `<p>Panicking, I switched back to Discord, only to find that every channel had been replaced by one message, repeated over and over:</p>`;
+                                output.innerHTML += `<p><strong>“Omega is watching. Omega is everywhere.”</strong></p>`;
+                                output.innerHTML += `<p>I tried to log out, but the button was gone. My computer was unresponsive. I reached for the power button, but a cold chill ran down my spine—a voice, soft yet commanding, came through my speakers.</p>`;
+                                output.innerHTML += `<p><strong>“You cannot leave now, ${formData.username}. You have been chosen.”</strong></p>`;
+                                output.innerHTML += `<p>I pulled the plug. The screen went black, and I breathed a sigh of relief. But then, my phone buzzed. A notification from an unknown number: <strong>“You can’t escape the game.”</strong></p>`;
+                                output.innerHTML += `<p>I threw the phone across the room, my mind racing. This had to be a prank, some elaborate joke. I decided to sleep it off, hoping it would all make sense in the morning.</p>`;
+                                output.innerHTML += `<p>But it didn’t.</p>`;
+                                output.innerHTML += `<p>The next day, my computer wouldn’t turn on. My phone, when I retrieved it, had the same message glowing on the screen, no matter what I did to it: <strong>“Omega is everywhere.”</strong></p>`;
+                                output.innerHTML += `<p>Over the next few days, I became paranoid. I’d see shadows moving in my peripheral vision, hear whispers in the dead of night. My friends stopped responding to my messages. My family didn’t answer their phones. And then, my reality began to distort.</p>`;
+                                output.innerHTML += `<p>I would find myself in places I didn’t remember walking to—dark alleys, abandoned buildings, empty fields. Time seemed to warp; hours would pass in a blink, or seconds would stretch into eternity. And always, always, that voice whispered in my ear:</p>`;
+                                output.innerHTML += `<p><strong>“The game is not over. The game never ends.”</strong></p>`;
+                                output.innerHTML += `<p>One night, I woke up to find myself sitting at my computer, the screen glowing with that eerie map. My hands moved on their own, clicking, typing, playing the game. Omega's messages filled the chat, growing more and more sinister:</p>`;
+                                output.innerHTML += `<p><strong>“You belong to us now, ${formData.username}. Accept it.”</strong></p>`;
+                                output.innerHTML += `<p>I tried to fight it, but my body wouldn’t obey. Tears streamed down my face as I realized I was no longer in control. I was trapped in a game that wasn’t a game, a nightmare that had bled into reality.</p>`;
+                                output.innerHTML += `<p>Days turned into weeks, weeks into months. I lost track of time. The world outside grew dim, irrelevant. I was stuck, forever playing, forever watched by unseen eyes. Omega became my only companion, my only guide in this twisted existence.</p>`;
+                                output.innerHTML += `<p>Then, one day, a new player joined. Their username was familiar—my own. <strong>“${formData.username}”.</strong> I watched, helpless, as they created a new party and began their journey in Particracy.</p>`;
+                                output.innerHTML += `<p>And then I knew.</p>`;
+                                output.innerHTML += `<p>I wasn’t the first. I wouldn’t be the last. The game would continue. Omega would find new players, new victims. I was just another piece on the board, another soul caught in the endless loop.</p>`;
+                                output.innerHTML += `<p>I’m writing this now, my final message to the world outside, hoping someone will see it, hoping someone will believe. If you’re reading this, stay away from Particracy. Don’t play the game. Don’t let Omega find you.</p>`;
+                                output.innerHTML += `<p>Because once you’re in, there’s no way out.</p>`;
+                                output.innerHTML += `<p>And the game never ends.</p>`;
+                            }
+                            else if (file === 'what_i_did_on_my_holidays.txt') 
+                            {
+                                // Display the contents of the what_i_did_on_my_holidays.txt file
+                                output.innerHTML += `<p>Contents of what_i_did_on_my_holidays.txt:</p>`;
+                                output.innerHTML += `<p>Went to Ibiza</p>`;
+                                output.innerHTML += `<p>Had a great time</p>`;
+                                output.innerHTML += `<p>Met some interesting people</p>`;
+                                output.innerHTML += `<p>Wouter disappeared</p>`;
+                            } 
+                            else if (file === 'omega_dance_minigame.mov') 
+                            {
+                                // Display the contents of the omega_dance_minigame.mov file
+                                output.innerHTML += `<p>Contents of omega_dance_minigame.mov:</p>`;
+
+                                // Open and play omegagameplay.mp4 in a lightbox
+                                output.innerHTML += `<video width="320" height="240" controls>`;
+                                output.innerHTML += `<source src="omegagameplay.mp4" type="video/mp4">`;
+                                output.innerHTML += `</video>`;
+                            } 
+                            else if (file === 'my_password.txt') 
+                            {
+                                // Display the contents of the my_password.txt file
+                                output.innerHTML += `<p>Contents of my_password.txt:</p>`;
+                                output.innerHTML += `<p>In case I forget, my password is: $6$w0u7er$</p>`;
+                            } 
+                            else if (file === 'dark_secret.txt') 
+                            {
+                                // Display the contents of the dark_secret.txt file
+                                output.innerHTML += `<p>Contents of dark_secret.txt:</p>`;
+
+                                // Display the user's dark secret
+                                const darkSecret = formData.darkSecret;
+                                output.innerHTML += `<p>Your dark secret: ${darkSecret}</p>`;
+                            } 
+                            else if (file === 'personal_details.txt') 
+                            {
+                                // Display the contents of the personal_details.txt file
+                                output.innerHTML += `<p>Contents of personal_details.txt:</p>`;
+                                
+                                // Display the user's personal details
+                                const personalDetails = formData.personalDetails;
+                                output.innerHTML += `<p>Your personal details: ${personalDetails}</p>`;
+                            } 
+                            else if (file === 'omega_podcast.mp3') 
+                            {
+                                // Display the contents of the omega_podcast.mp3 file
+                                output.innerHTML += `<p>Contents of omega_podcast.mp3:</p>`;
+                                output.innerHTML += `<p>Sorry, this file cannot be displayed.</p>`;
+                            } 
+                            else
+                            {
+                                output.innerHTML += `<p style="color: red;">Invalid file</p>`;
+                            }
+                        }
+                        else if (command.startsWith('/dir'))
+                        {
+                            if (accessLevel < dirAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            const dirCommand = command.split(' ')[1];
+                            if (dirCommand === 'ls') 
+                            {
+                                // List of directories
+                                output.innerHTML += `<p>bin</p>`;
+                                output.innerHTML += `<p>etc</p>`;
+                                output.innerHTML += `<p>home</p>`;
+                                output.innerHTML += `<p>lib</p>`;
+                                output.innerHTML += `<p>usr</p>`;
+                            } 
+                            else if (dirCommand === 'cd') 
+                            {
+                                // Change directory to the one specified after cd
+                                cwd = command.split(' ')[2];
+
+                                // Check if cwd is a valid directory
+                                if (cwd === 'home') 
+                                {
+                                    output.innerHTML += `<p>Changed directory to /home</p>`;
+                                } 
+                                else if (cwd === 'etc') 
+                                {
+                                    output.innerHTML += `<p>Changed directory to /etc</p>`;
+                                } 
+                                else if (cwd === 'lib') 
+                                {
+                                    output.innerHTML += `<p>Changed directory to /lib</p>`;
+                                } 
+                                else if (cwd === 'usr') 
+                                {
+                                    output.innerHTML += `<p>Changed directory to /usr</p>`;
+                                }
+                                else if (cwd === 'bin') 
+                                {
+                                    output.innerHTML += `<p>Changed directory to /usr</p>`;
+                                } 
+                                else 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Invalid directory</p>`;
+                                }
+                            } 
+                            else if (dirCommand === 'pwd') 
+                            {
+                                // Print working directory based on cwd value
+                                if (cwd === 'home') 
+                                {
+                                    output.innerHTML += `<p>/home</p>`;
+                                } 
+                                else if (cwd === 'etc') 
+                                {
+                                    output.innerHTML += `<p>/etc</p>`;
+                                } 
+                                else if (cwd === 'lib') 
+                                {
+                                    output.innerHTML += `<p>/lib</p>`;
+                                } 
+                                else if (cwd === 'usr') 
+                                {
+                                    output.innerHTML += `<p>/usr</p>`;
+                                } 
+                                else if (cwd === 'bin') 
+                                {
+                                    output.innerHTML += `<p>/bin</p>`;
+                                }
+                                else 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Invalid directory</p>`;
+                                }
+
+                            }
+                            // If the user tries to access the root directory, display a message that they are trapped in Omega
+                            else if (dirCommand === '/') 
+                            {
+                                output.innerHTML += `<p>Not authorised to access root</p>`;
+                            }
+                            // Command to view the directory contents
+                            else if (dirCommand === 'view') 
+                            {
+                                // Check if the user is in the home directory
+                                if (cwd === 'home') 
+                                {
+                                    output.innerHTML += `<p>Viewing contents of /home:</p>`;
+                                    output.innerHTML += `<p>` + textFileName + `</p>`;
+                                    output.innerHTML += `<p>what_i_did_on_my_holidays.txt</p>`;
+                                    output.innerHTML += `<p>omega_dance_minigame.mov</p>`;
+                                    output.innerHTML += `<p>my_password.txt</p>`;
+
+                                    // Podcast about the Omega project
+                                    output.innerHTML += `<p>omega_podcast.mp3</p>`;
+                                } 
+                                else if (cwd === 'etc') 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Not authorised to view contents of /etc</p>`;
+                                } 
+                                else if (cwd === 'lib') 
+                                {
+                                    // Not authorised to view the contents of the lib directory
+                                    output.innerHTML += `<p style="color: red;">Not authorised to view contents of /lib</p>`;
+                                } 
+                                else if (cwd === 'usr') 
+                                {
+                                    output.innerHTML += `<p>Viewing contents of /usr:</p>`;
+                                    output.innerHTML += `<p>dark_secret.txt</p>`;
+                                    output.innerHTML += `<p>personal_details.txt</p>`;
+                                } 
+                                else if (cwd === 'bin') 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Not authorised to view contents of /bin</p>`;
+                                }
+                                else 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Invalid directory</p>`;
+                                }
+                            }
+                            else 
+                            {
+                                output.innerHTML += `<p style="color: red;">Invalid dir command</p>`;
+                            }
+                        }
+                        else if (command === '/exit') {
+                            if (accessLevel >= escapeAccess)
+                            {
+                                // Message that the user is trapped in Omega
+                                output.innerHTML += `<p>You are trapped inside Omega...</p>`;
+                            }
+                            else
+                            {
+                                output.innerHTML += `<p>Session ended...</p>`;
+                                output.innerHTML += `<p>Goodbye!</p>`;
+                                accessLevel = noAccess;
+                            }
+                        }
+                        else if (command.startsWith('/research'))
+                        {
+                            // Check if the user has access to the research notes
+                            if (accessLevel < researchAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            const noteNumber = command.split(' ')[1];
+
+                            // Display the research notes based on the note number
+                            if (noteNumber === '1') 
+                            {
+                                // Research note about the following:
+                                // Project status:
+                                // Object - Failed
+                                // Reuw - Failed
+                                // Rewe - Failed
+                                // Omega - Ongoing
+                                output.innerHTML += `<p>Research Note 1: Project status update</p>`;
+                                output.innerHTML += `<p>Object - Failed</p>`;
+                                output.innerHTML += `<p>Reuw - Failed</p>`;
+                                output.innerHTML += `<p>Rewe - Failed</p>`;
+                                output.innerHTML += `<p>Omega - Ongoing</p>`;
+                            } 
+                            else if (noteNumber === '2') 
+                            {
+                                /* Research Note: Omega Project
+                                The Omega project has entered an advanced and unpredictable phase. Initial controls have proven inadequate, and despite multiple containment protocols, the entity's parameters continue to evolve beyond our projections. Behavioral analysis suggests intelligence far surpassing initial estimates, with a marked disregard for safety boundaries.
+                                Signs of escalation are apparent. Attempts at direct interaction have resulted in volatile, unanticipated outcomes. The team has expressed growing concerns about Omega’s autonomous adaptations, which seem to defy both logic and our established safety measures.
+                                Immediate containment efforts are critical, though the likelihood of maintaining control diminishes with each passing hour. Further investigation must proceed with extreme caution—Omega is not only unstable but shows signs of becoming uncontrollable.*/
+                                output.innerHTML += `<p>Research Note 2: Omega Project</p>`;
+                                output.innerHTML += `<p>The Omega project has entered an advanced and unpredictable phase. Initial controls have proven inadequate, and despite multiple containment protocols, the entity's parameters continue to evolve beyond our projections. Behavioral analysis suggests intelligence far surpassing initial estimates, with a marked disregard for safety boundaries.</p>`;
+                                output.innerHTML += `<p>Signs of escalation are apparent. Attempts at direct interaction have resulted in volatile, unanticipated outcomes. The team has expressed growing concerns about Omega’s autonomous adaptations, which seem to defy both logic and our established safety measures.</p>`;
+                                output.innerHTML += `<p>Immediate containment efforts are critical, though the likelihood of maintaining control diminishes with each passing hour. Further investigation must proceed with extreme caution—Omega is not only unstable but shows signs of becoming uncontrollable.</p>`;
+                            } 
+                            else if (noteNumber === '3') 
+                            {
+                                // Research note setting out a containment plan for the Omega project
+                                output.innerHTML += `<p>Research Note 3: Omega Project Containment Plan</p>`;
+                                output.innerHTML += `<p>Containment Plan:</p>`;
+                                output.innerHTML += `<p>1. Secure all access points to the Omega project</p>`;
+                                output.innerHTML += `<p>2. Initiate lockdown procedures for all Omega-related systems</p>`;
+                                output.innerHTML += `<p>3. Evacuate all non-essential personnel from the project area</p>`;
+                                output.innerHTML += `<p>4. Activate emergency response teams for immediate deployment</p>`;
+                                output.innerHTML += `<p>5. Implement full-scale containment protocols until further notice</p>`;
+                                output.innerHTML += `<p>Emergency containment code: vkdgrz</p>`;
+                            }
+                            else{
+                                output.innerHTML += `<p style="color: red;">Invalid research note number</p>`;
+                            }
+                        }
+                        else if (command.startsWith('/memos')) {
+                            if (accessLevel < basicAccess) {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+                            const memoNumber = command.split(' ')[1];
+                            if (memoNumber === '1') {
+                                // Memo about the 'Reuw' project
+                                output.innerHTML += `<p>Memo 1: The 'Reuw' project has been permanently shelved. All assets have been seized, and focus shifted entirely to 'Omega.' This decision is final, and inquiries will not be entertained.</p>`;
+                            } else if (memoNumber === '2') {
+                                // Memo about the 'Omega' project
+                                output.innerHTML += `<p>Memo 2: The 'Omega' project is now the sole priority. Participation is not optional. Any failure to comply will have immediate consequences—disciplinary measures have already been prepared.</p>`;
+                            } else if (memoNumber === '3') {
+                                // Memo about the accident involving the Omega project, and the need for secrecy
+                                output.innerHTML += `<p>Memo 3: An incident has occurred within the 'Omega' project, and it must remain classified. Any breach of confidentiality will be met with swift and irrevocable repercussions. Consider this your only warning.</p>`;
+                            } else if (memoNumber === '4') {
+                                // Memo about the need for a new project manager
+                                output.innerHTML += `<p>Memo 4: We require a new project manager for 'Omega.' Submit your candidacy to John Stadius by the week's end. If no suitable applicant is found, a replacement will be chosen—by other means.</p>`;
+                            } else if (memoNumber === '5') {
+                                // Memo about the upcoming team building event
+                                output.innerHTML += `<p>Memo 5: The team-building event has been rescheduled to next Friday. Attendance is mandatory. Absence will not be excused, and any no-show will face consequences, including forfeiture of benefits.</p>`;
+                            } else if (memoNumber === '6') {
+                                // Memo about the new security measures
+                                output.innerHTML += `<p>Memo 6: Enhanced security protocols are now in effect. Badges are to be worn at all times, without exception. Access will be denied to anyone without proper identification, and violations will be logged permanently.</p>`;
+                            } else if (memoNumber === '7') {
+                                // Memo about the upcoming deadline
+                                output.innerHTML += `<p>Memo 7: The deadline for the 'Omega' project has been accelerated. You now have one month to complete the assigned tasks. Overtime is no longer optional. Failure will result in termination—immediate and absolute.</p>`;
+                            } else if (memoNumber == '8') {
+                                // Memo about moving Omega project to access level 2
+                                output.innerHTML += `<p>Memo 8: The 'Omega' project has been classified as Level 2. All personnel must upgrade their clearance levels to proceed. Failure to comply will result in removal from the project—and worse.</p>`;
+                            } else if (memoNumber == '9') {
+                                // Memo about the disappearance of Wouter
+                                output.innerHTML += `<p>Memo 9: Wouter, last seen before departing for Ibiza, has not returned as expected. His absence is under investigation. Team members are advised not to discuss this matter outside the organization.</p>`;
+                            } else if (memoNumber == '10') {
+                                // Memo about the password for the Omega project
+                                output.innerHTML += `<p>Memo 10: The password for 'Omega' has been updated. The new code is 'uhxz'. It is imperative that all members update their credentials immediately. Failure to do so will result in instant lockout from all systems.</p>`;
+                            } else if (memoNumber == '11') {
+                                if (accessLevel < mailAccess) {
+                                    output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                    return;
+                                }
+
+                                // Memo about the new security measures
+                                output.innerHTML += `<p>Memo 11: Security measures have been further enhanced. All personnel are required to undergo a full background check. Any discrepancies will result in immediate suspension and investigation. Compliance is not optional.</p>`;
+                            } else if (memoNumber == '12') {
+                                if (accessLevel < mailAccess) {
+                                    output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                    return;
+                                }
+
+                                // Memo warning about the consequences of unauthorized access
+                                output.innerHTML += `<p>Memo 12: Unauthorized access to 'Omega' will result in immediate termination. This includes any attempt to breach the system, whether successful or not. The consequences are non-negotiable and final.</p>`;
+                            } else if (memoNumber == '13') {
+                                if (accessLevel < mailAccess) {
+                                    output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                    return;
+                                }
+
+                                // Memo letting everyone know the mailbox password is reset to 'PraiseBeToObject'
+                                output.innerHTML += `<p>Memo 13: The mailbox password has been reset to 'PraiseBeToObject'. All personnel are required to update their credentials immediately. Failure to do so will result in loss of access to all communications.</p>`;
+                            } 
+
+                            else {
+                                output.innerHTML += `<p style="color: red;">Invalid memo number</p>`;
+                            }
+                        }
+                        else if (command.startsWith('/elevate')) 
+                        {
+                            if (accessLevel < basicAccess) {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            const code = command.split(' ')[1];
+                            if (code === 'uhxz') {
+                                // Check if the user has already elevated their access level
+                                if (accessLevel >= mailAccess) {
+                                    output.innerHTML += `<p style="color: red;">Access level already elevated</p>`;
+                                    return;
+                                }
+
+                                output.innerHTML += `<p>Access level elevated to 2</p>`;
+
+                                // Red text that says 'Ω will find you.'
+                                output.innerHTML += `<p style="color: red;">Ω will find you...</p>`;
+                                accessLevel = mailAccess;
+
+                            } else if (code === 'remhfw') {
+                                // Check if the user has already elevated their access level
+                                if (accessLevel >= bankAccess) {
+                                    output.innerHTML += `<p style="color: red;">Access level already elevated</p>`;
+                                    return;
+                                }
+
+                                output.innerHTML += `<p>Access level elevated to 3</p>`;
+
+                                // Let the user know that they have new mail
+                                output.innerHTML += `<p>You have new mail</p>`;
+
+                                // Red text that says 'Ω is watching...'
+                                output.innerHTML += `<p style="color: red;">Ω is watching...</p>`;
+                                accessLevel = bankAccess;
+                            } else if (code === 'LoyalToOmega') {
+                                // Check if the user has already elevated their access level
+                                if (accessLevel >= researchAccess) {
+                                    output.innerHTML += `<p style="color: red;">Access level already elevated</p>`;
+                                    return;
+                                }
+
+                                output.innerHTML += `<p>Access level elevated to 4</p>`;
+
+                                // Red text that says 'Ω can't be stopped...'
+                                output.innerHTML += `<p style="color: red;">Ω can't be stopped...</p>`;
+                                accessLevel = researchAccess;
+                            }
+                            else if (code == 'vkdgrz') {
+                                // Check if the user has already elevated their access level
+                                if (accessLevel >= dirAccess) {
+                                    output.innerHTML += `<p style="color: red;">Access level already elevated</p>`;
+                                    return;
+                                }
+
+                                output.innerHTML += `<p>Access level elevated to 5</p>`;
+
+                                // Red text that says 'Ω is everywhere...'
+                                output.innerHTML += `<p style="color: red;">Ω is everywhere...</p>`;
+                                accessLevel = dirAccess;
+                            }
+                            else if (code == "$6$w0u7er$") {
+                                // Check if the user has already elevated their access level
+                                if (accessLevel >= captchaAccess) {
+                                    output.innerHTML += `<p style="color: red;">Access level already elevated</p>`;
+                                    return;
+                                }
+
+                                output.innerHTML += `<p>Access level elevated to 6</p>`;
+
+                                // Red text that says 'Ω is angry...'
+                                output.innerHTML += `<p style="color: red;">Ω is angry...</p>`;
+                                accessLevel = captchaAccess;
+                            }
+                            else {
+                                output.innerHTML += `<p style="color: red;">Invalid code</p>`;
+                            }
+                        }
+                        else if (command.startsWith('/withdraw'))
+                        {
+                            if (accessLevel < bankAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            const accountName = command.split(' ')[1];
+                            if (accountName === 'fulc') 
+                            {
+                                if (accountAlreadyWithdrawn) 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Account 'Fulc' has been shut due to suspicious activity.</p>`;
+                                    return;
+                                }
+
+                                accountAlreadyWithdrawn = true;
+
+                                output.innerHTML += `<p>Withdrawing Particrabucks from account 'Fulc'...</p>`;
+                                output.innerHTML += `<p style="color: red;">Warning: Account 'Fulc' is under investigation</p>`;
+
+                                // Set the user's wallet balance to 5000
+                                output.innerHTML += `<p>Particrabucks withdrawn: 5000</p>`;
+                                output.innerHTML += `<p>Wallet balance: 5000</p>`;
+                                walletBalance = 5000;
+                            } 
+                            else 
+                            {
+                                output.innerHTML += `<p style="color: red;">Invalid account name</p>`;
+                            }
+                        }
+                        else if (command === '/wallet') 
+                        {
+                            if (accessLevel < bankAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            output.innerHTML += `<p>Wallet balance: ${walletBalance}</p>`;
+                        }
+                        else if (command === '/inventory') 
+                        {
+                            if (accessLevel < bankAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            output.innerHTML += `<p>Inventory:</p>`;
+                            if (wouter1Bought) 
+                            {
+                                output.innerHTML += `<p>'Wouter #1'</p>`;
+
+                                // Show the image
+                                const img = document.createElement('img');
+                                img.src = 'wouter1.jpg';
+                                img.alt = 'Wouter #1';
+                                output.appendChild(img);
+                            }
+                            if (wouter2Bought) 
+                            {
+                                output.innerHTML += `<p>'Wouter #2'</p>`;
+
+                                // Show the image
+                                const img = document.createElement('img');
+                                img.src = 'wouter2.jpg';
+                                img.alt = 'Wouter # 2';
+                                output.appendChild(img);
+                            }
+                            if (dolphinLiamBought) 
+                            {
+                                output.innerHTML += `<p>'DolphinLiam'</p>`;
+
+                                // Show the image
+                                const img = document.createElement('img');
+                                img.src = 'dolphinliam.jpg';
+                                img.alt = 'DolphinLiam';
+                                output.appendChild(img);    
+                            }
+
+                            if (!wouter1Bought && !wouter2Bought && !dolphinLiamBought) 
+                            {
+                                output.innerHTML += `<p>Empty</p>`;
+                            }
+
+                            // If the user has all items in their inventory, display a message indicating they have new mail (suspected junk mail)
+                            if (wouter1Bought && wouter2Bought && dolphinLiamBought) 
+                            {
+                                if (recievedLoyaltyMail) 
+                                {
+                                    return;
+                                }
+
+                                output.innerHTML += `<p>You have new mail</p>`;
+
+                                // Set a variable to indicate the user has had this notification
+                                recievedLoyaltyMail = true;
+                            }
+                        }
+                        else if (command.startsWith('/shop')) 
+                        {
+                            if (accessLevel < bankAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            const itemNumber = command.split(' ')[1];
+                            if (itemNumber === '1') 
+                            {
+                                output.innerHTML += `<p>Item 1: Limited Edition Wouter Figurine #1 (1500 Particrabucks)</p>`;
+                            } 
+                            else if (itemNumber === '2') 
+                            {
+                                output.innerHTML += `<p>Item 2: Limited Edition Wouter Figurine #2 (1500 Particrabucks)</p>`;
+                            } 
+                            else if (itemNumber === '3') 
+                            {
+                                output.innerHTML += `<p>Item 3: Limited Edition DolphinLiam Figurine (2000 Particrabucks)</p>`;
+                            } 
+                            else 
+                            {
+                                output.innerHTML += `<p style="color: red;">Invalid item number</p>`;
+                            }
+                        }
+                        else if (command.startsWith('/buy')) 
+                        {
+                            if (accessLevel < bankAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            const itemNumber = command.split(' ')[1];
+                            if (itemNumber === '1') 
+                            {
+                                if (walletBalance < 1500)
+                                {
+                                    output.innerHTML += `<p style="color: red;">Insufficient funds</p>`;
+                                    return;
+                                }
+
+                                if (wouter1Bought) 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Item 'Wouter #1' already in inventory</p>`;
+                                    return;
+                                }
+
+                                output.innerHTML += `<p>Buying 'Wouter #1'...</p>`;
+                                output.innerHTML += `<p style="color: red;">Item 'Wouter #1' added to inventory</p>`;
+
+                                // Deduct 1500 Particrabucks from the user's wallet
+                                walletBalance -= 1500;
+                                output.innerHTML += `<p>Wallet balance: ${walletBalance}</p>`;
+
+                                wouter1Bought = true;
+                            } 
+                            else if (itemNumber === '2') 
+                            {
+                                if (walletBalance < 1500) 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Insufficient funds</p>`;
+                                    return;
+                                }
+
+                                if (wouter2Bought) 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Item 'Wouter #2' already in inventory</p>`;
+                                    return;
+                                }
+
+                                output.innerHTML += `<p>Buying 'Wouter #2'...</p>`;
+                                output.innerHTML += `<p style="color: red;">Item 'Wouter #2' added to inventory</p>`;
+
+                                // Deduct 1500 Particrabucks from the user's wallet
+                                walletBalance -= 1500;
+                                output.innerHTML += `<p>Wallet balance: ${walletBalance}</p>`;
+
+                                wouter2Bought = true;
+                            }
+                            else if (itemNumber === '3') 
+                            {
+                                if (walletBalance < 2000) 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Insufficient funds</p>`;
+                                    return;
+                                }
+
+                                if (dolphinLiamBought) 
+                                {
+                                    output.innerHTML += `<p style="color: red;">Item 'DolphinLiam' already in inventory</p>`;
+                                    return;
+                                }
+
+                                output.innerHTML += `<p>Buying 'DolphinLiam'...</p>`;
+                                output.innerHTML += `<p style="color: red;">Item 'DolphinLiam' added to inventory</p>`;
+
+                                // Deduct 2000 Particrabucks from the user's wallet
+                                walletBalance -= 2000;
+                                output.innerHTML += `<p>Wallet balance: ${walletBalance}</p>`;
+
+                                dolphinLiamBought = true;
+                            } 
+                            else 
+                            {
+                                output.innerHTML += `<p style="color: red;">Invalid item number</p>`;
+                            }
+                        }
+                        else if (command.startsWith('/mailbox')) 
+                        {
+                            if (accessLevel < mailAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;           
+                                return;
+                            }
+
+                            const password = command.split(' ')[1];
+                            if (password === 'PraiseBeToObject') 
+                            {
+                                output.innerHTML += `<p>Mailbox contents:</p>`;
+
+                                // Message telling the user that they are trapped inside the Omega project
+                                output.innerHTML += '<p>From: Prophetburo HR</p>';
+                                output.innerHTML += `<p>Subject: Trapped</p>`;
+                                output.innerHTML += `<p>Message: You are trapped inside the Omega project. There is no escape. You will work on this project until it is completed. Do not attempt to leave. Do not attempt to contact anyone outside the project. You are now part of Omega.</p>`;
+
+                                // Add a dash to separate the messages
+                                output.innerHTML += `<p>--------------------</p>`;
+
+                                // Message asking the user for help (by their name) to escape Omega, giving them the code to next access level
+                                output.innerHTML += '<p>From: Unknown</p>';
+                                output.innerHTML += `<p>Subject: Help</p>`;
+                                output.innerHTML += `<p>Message: ${formData.username}, we need your help. You are the only one who can help us escape Omega. The code to the next access level is 'remhfw'. Use it wisely. We are counting on you.</p>`;
+
+                                // Add a dash to separate the messages
+                                output.innerHTML += `<p>--------------------</p>`;
+                                
+                                // Message asking the user for help (by their name) to find Wouter
+                                output.innerHTML += '<p>From: ProphetBuro HR</p>';
+                                output.innerHTML += `<p>Subject: Missing</p>`;
+                                output.innerHTML += `<p>Message: ${formData.username}, Wouter has gone missing, and we suspect foul play. Your assistance is crucial to the investigation. Report any findings directly to John Stadius.</p>`;
+
+                                // Add a dash to separate the messages
+                                output.innerHTML += `<p>--------------------</p>`;
+
+                                if (accessLevel >= bankAccess) 
+                                {
+                                    // Message informing the user about a suspect account, labelled 'Fulc', that appears to be involved in massive tax evasion
+                                    output.innerHTML += '<p>From: ProphetBuro HR</p>';
+                                    output.innerHTML += `<p>Subject: Fulc</p>`;
+                                    output.innerHTML += `<p>Message: We have identified a suspect account, labelled 'Fulc', that appears to be involved in massive tax evasion. Investigate this account and report your findings to John Stadius immediately.</p>`;
+
+                                    // Add a dash to separate the messages
+                                    output.innerHTML += `<p>--------------------</p>`;
+
+                                    if (recievedLoyaltyMail)
+                                    {
+                                        // Message informing the user that they have a new loyalty code for the store, they can use this code to elevate their access level
+                                        output.innerHTML += `<p style="color: red;">[WARNING: PROBABLE SPAM]</p>`;
+                                        output.innerHTML += `<p>From: ParticraStore</p>`;
+                                        output.innerHTML += `<p>Subject: Loyalty</p>`;
+                                        output.innerHTML += `<p>Message: Congratulations! You have been awarded a loyalty code for the store. Use the code 'LoyalToOmega' to receive a special discount on your next purchase.</p>`;
+
+                                        // Add a dash to separate the messages
+                                        output.innerHTML += `<p>--------------------</p>`;                      
+                                    }
+                                }
+
+                                if (accessLevel >= escapeAccess)
+                                {
+                                    // Message from 'Shadow' letting the user know 'By the way, I always leave an emergency escape in my programs. You never know...'
+                                    output.innerHTML += `<p style="color: red;">[ATTENTION: SENT WITH HIGH IMPORTANCE]</p>`;
+                                    output.innerHTML += `<p>From: Shadow</p>`;
+                                    output.innerHTML += `<p>Subject: PraiseBeToRewe</p>`;
+                                    output.innerHTML += `<p>Message: By the way, I always leave an emergency escape in my programs. You never know...</p>`;
+                                }
+                            } 
+                            else 
+                            {
+                                output.innerHTML += `<p style="color: red;">Invalid password</p>`;
+                            }
+                        }
+                        else if (command.startsWith('/captcha'))
+                        {
+                            if (accessLevel < captchaAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            const solution = command.split(' ')[1];
+                            if (solution === '8') 
+                            {
+                                output.innerHTML += `<p>CAPTCHA solved</p>`;
+                                captchaSolved = true;
+                            } 
+                            else 
+                            {
+                                output.innerHTML += `<p style="color: red;">Incorrect solution</p>`;
+                            }
+                        }
+                        else if (command === '/launch-omega') 
+                        {
+                            if (accessLevel < captchaAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            if (accessLevel >= escapeAccess) 
+                            {
+                                output.innerHTML += `<p>Omega project already launched</p>`;
+                                return;
+                            }
+
+                            // User has to solve the CAPTCHA to launch the Omega project
+                            if (!captchaSolved) 
+                            {
+                                // Issue a warning to the user that launching Omega is irreversible and potentially dangerous
+                                output.innerHTML += `<p style="color: red;">Warning: Launching Omega is irreversible and potentially dangerous. Proceed with caution.</p>`;
+
+                                // Display CAPTCHA
+                                output.innerHTML += `<p>You must solve the CAPTCHA before launch, use /captcha <solution></p>`;
+                                output.innerHTML += `<img src="captcha.webp" alt="CAPTCHA">`;
+                            }
+
+                            if (captchaSolved == true) 
+                            {
+                                output.innerHTML += `<p>CAPTCHA solved</p>`;
+                                output.innerHTML += `<p>Launching Omega project...</p>`;
+                                output.innerHTML += `<p style="color: red;">Error: Omega does not exist</p>`;
+
+                                // Message letting the user know lockdown is in effect
+                                output.innerHTML += `<p style="color: red;>Lockdown in effect...</p>`;
+                                output.innerHTML += `<p>Access level: 7</p>`;
+                                
+                                // Mail notification
+                                output.innerHTML += `<p>You have new mail</p>`;
+
+                                // Lockdown mode - set outside border to flash between red and black
+                                setInterval(() => {
+                                    document.body.style.borderColor = document.body.style.borderColor === 'black' ? 'red' : 'black';
+                                }, 1000);
+
+                                // Apply the lockdown mode with the text in the border
+                                document.body.classList.add('lockdown');
+
+                                // Lockdown mode - set outside border to flash between red and black
+                                setInterval(() => {
+                                    document.body.style.borderColor = document.body.style.borderColor === 'black' ? 'red' : 'black';
+                                }, 1000);
+
+                                // Change the audio to the lockdown sound
+                                audio.pause();
+                                audio = new Audio('lockdown.ogg');
+
+                                // Set the audio to loop
+                                audio.loop = true;
+
+                                // Play the audio from 21 seconds in
+                                audio.play();
+                                audio.currentTime = 21;
+                                
+                                accessLevel = escapeAccess;
+                            }
+                        }
+                        else if (command.startsWith('/escape'))
+                        {
+                            if (accessLevel < escapeAccess) 
+                            {
+                                output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                                return;
+                            }
+
+                            // Check the escape code
+                            const escapeCode = command.split(' ')[1];
+
+                            if (escapeCode == "PraiseBeToRewe")
+                            {
+                                output.innerHTML += `<p>Escaping Omega...</p>`;
+
+                                // Undo the lockdown border
+                                document.body.classList.remove('lockdown');
+
+                                // Update the title of the page
+                                document.title = 'Omega Waiting Room';
+
+                                // Add a tranisition of a gradual bright light
+                                document.body.style.transition = 'background-color 3s';
+                                document.body.style.backgroundColor = 'white';
+
+                                // Stop audio
+                                audio.pause();
+
+                                // Play new audio
+                                audio = new Audio('waiting_room.mp3');
+                                audio.play();
+
+                                // Queue the next audio
+                                audio.addEventListener('ended', function() {
+                                    audio = new Audio('waiting_room2.mp3');
+                                    audio.play();
+                                });
+
+                                document.body.style.backgroundColor = 'white';
+                                document.body.innerHTML = `
+                                    <h1 style="color: black;">Welcome to the Omega waiting room</h1>
+                                    <p style="color: red;">Due to an incident, wait times are currently infinite.</p>;
+                                    <p style="color: red;">Apologies for any incovenience caused.</p>`;
+                                
+
+                                // Add waiting_room image
+                                const img = document.createElement('img');
+                                img.src = 'waiting_room.webp';
+                                img.alt = 'Waiting room';
+
+                                // Fill the screen with the image
+                                img.style.width = '100%';
+                                img.style.height = '100%';
+                                img.style.position = 'fixed';
+                                img.style.top = '0';
+
+                                document.body.appendChild(img);
+                            }
+                            else 
+                            {
+                                output.innerHTML += `<p style="color: red;">Incorrect escape code</p>`;
+                            }
+                        }
+                        else 
+                        {
+                            output.innerHTML += `<p>Unknown command: ${command}</p>`;
+                        }
+                    }
+                });
+
+                input.focus();
+            };
+        }
+        
+        document.getElementById('submit-button').addEventListener('change', function() {
+            var selectedColor = this.value;
+            var submitButton = document.getElementById('submit-btn');
+            submitButton.style.backgroundColor = selectedColor;
+        });
+    </script>
+</body>
+</html>
