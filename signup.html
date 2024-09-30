@@ -677,12 +677,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="logo-64x64.png">
         <link rel="stylesheet" href="icon.css">
         <link rel="stylesheet" href="css.css">
-      
-        
-        
-        
-        
-        
+ 
       <link rel="stylesheet" href="styles.7762873066718bc6fab0.css"><style>
       .block-ui-wrapper {
         display: none;
@@ -772,79 +767,6 @@
         }
       }
       </style><style>.game-page[_ngcontent-fnp-c275]{display:flex;overflow-y:scroll;flex-direction:row;flex-wrap:nowrap;justify-content:space-between;align-content:flex-start;min-height:calc(100vh - 96px)}.game-page-end[_ngcontent-fnp-c275], .game-page-middle[_ngcontent-fnp-c275], .game-page-start[_ngcontent-fnp-c275]{flex-grow:1;flex-basis:0}.game-page-middle[_ngcontent-fnp-c275]{height:100%}.game-nav-left[_ngcontent-fnp-c275], .game-nav-right[_ngcontent-fnp-c275]{display:none;position:fixed;top:101px;border-radius:8px;padding:5px 6px;z-index:1000000;background-color:#2c629e;color:#fff}.game-nav-left[_ngcontent-fnp-c275]   pt-icon[_ngcontent-fnp-c275], .game-nav-right[_ngcontent-fnp-c275]   pt-icon[_ngcontent-fnp-c275]{position:relative;top:2px;cursor:pointer}.game-nav-left[_ngcontent-fnp-c275]{left:4px}.game-nav-right[_ngcontent-fnp-c275]{right:4px}.content-grid-center[_ngcontent-fnp-c275]{justify-content:center}@media (max-width:512px){.game-page[_ngcontent-fnp-c275]{margin-top:144px;scroll-behavior:smooth}.mdl-error-box[_ngcontent-fnp-c275]{position:relative;top:144px}.game-nav-left[_ngcontent-fnp-c275], .game-nav-right[_ngcontent-fnp-c275]{display:block}.game-page-end[_ngcontent-fnp-c275]{display:none}}@media (max-width:1599px){.game-page[_ngcontent-fnp-c275]{flex-direction:column;align-items:stretch}.game-page-start[_ngcontent-fnp-c275]{min-height:90px}.game-page-end[_ngcontent-fnp-c275]{min-height:250px}}@media (min-width:600px){.game-page-start[_ngcontent-fnp-c275]{padding-top:16px;min-height:106px}.game-page-end[_ngcontent-fnp-c275]{padding-bottom:16px;min-height:266px}.game-page-end[_ngcontent-fnp-c275], .game-page-start[_ngcontent-fnp-c275]{padding-left:16px;padding-right:16px}}@media (min-width:1600px){.game-page[_ngcontent-fnp-c275]{flex-direction:row;align-items:flex-start}.game-page-end[_ngcontent-fnp-c275], .game-page-start[_ngcontent-fnp-c275]{min-height:784px;max-width:400px;padding-top:16px}.game-page-middle[_ngcontent-fnp-c275]{max-width:1344px}}</style><style>[_nghost-fnp-c107]{line-height:0;vertical-align:middle}</style><style>.adsense[_ngcontent-fnp-c271]{display:block;position:relative;text-align:center}</style><script data-scrapbook-elem="custom-elements-loader">(function (names) { if (!customElements) { return; } for (const name of names) { customElements.define(name, class CustomElement extends HTMLElement {}); } })(["pt-app","block-ui","router-outlet","ng-component","pt-game-menu","pt-icon","block-ui-content","toaster-container","editor-card"])</script>
-    <style>
-        /*body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"], input[type="email"], input[type="password"], select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }*/
-
-        body.lockdown 
-        {
-            position: relative;
-            padding: 20px;
-            margin: 10px;
-            border: 5px solid black;
-            border-radius: 10px;
-            background-color: black;
-            color: red;
-        }
-
-        body.lockdown::before, body.lockdown::after {
-            content: 'LOCKDOWN';
-            position: absolute;
-            font-size: 20px;
-            font-weight: bold;
-            color: red;
-            animation: flash 1s linear infinite;
-            z-index: 10;
-            background-color: black; /* Matches the background to blend with the page */
-            padding: 0 10px; /* Padding to ensure the text doesn’t touch the borders */
-        }
-
-        body.lockdown::before {
-            top: 50%;  /* Vertically align in the middle of the top border */
-            left: 0;
-            right: 0;
-            transform: translateY(-50%); /* Offset to center vertically */
-            text-align: center; /* Center the text horizontally */
-        }
-
-        body.lockdown::after {
-            bottom: 50%;  /* Vertically align in the middle of the bottom border */
-            left: 0;
-            right: 0;
-            transform: translateY(50%); /* Offset to center vertically */
-            text-align: center; /* Center the text horizontally */
-        }
-
-        @keyframes flash {
-            0% { color: red; }
-            50% { color: black; }
-            100% { color: red; }
-        }
-        </style>
 </head>
 <body>
     <script>
@@ -926,6 +848,8 @@
             const dirAccess = 5;
             const captchaAccess = 6;
             const escapeAccess = 7;
+            const chatAccess = 8;
+            const finalChoiceAccess = 9;
 
             // stop audio
             audio.pause();
@@ -953,7 +877,7 @@
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
                     ctx.fillStyle = '#0F0';
                     letters.map((y_pos, index) => {
-                        const text = String.fromCharCode(3e4 + Math.random() * 33);
+                        const text = "Ω"//String.fromCharCode(3e4 + Math.random() * 33);
                         const x_pos = index * 10;
                         ctx.fillText(text, x_pos, y_pos);
                         letters[index] = y_pos > 758 + Math.random() * 1e4 ? 0 : y_pos + 10;
@@ -979,13 +903,13 @@
                         <p style="color: red;">WARNING: This is a developer tool. Use with caution.</p>
                         <p>Type '/run' to start session</p>
                         <div id="console-output"></div>
-                        <input type="text" id="console-input" style="width: 100%; background-color: black; color: green; border: none; outline: none;">
+                        <input type="text" id="console-input" autocomplete="off" style="width: 100%; background-color: black; color: green; border: none; outline: none;">
                     </div>
                 `;
 
                 const input = document.getElementById('console-input');
                 const output = document.getElementById('console-output');
-                var accessLevel = noAccess;
+                var accessLevel = noAccess; //  change this to test different access levels
 
                 input.addEventListener('keydown', function(event) {
                     if (event.key === 'Enter') {
@@ -1082,6 +1006,260 @@
                                 // Command for escaping Omega with the escape code
                                 output.innerHTML += `<p>/escape [code] - Escape Omega with code</p>`;
                             }
+
+                            if (accessLevel >= chatAccess) 
+                            {
+                                // Command for leaving the chat
+                                output.innerHTML += `<p>/leave - Leave the chat</p>`;
+                            }
+
+                            if (accessLevel >= finalChoiceAccess) 
+                            {
+                                // Command for going to the waiting room
+                                output.innerHTML += `<p>/go - Go with Omega to the waiting room</p>`;
+
+                                // Command for staying with Shadow
+                                output.innerHTML += `<p>/stay - Stay with Shadow and resist Omega</p>`;
+                            }
+                        }
+                        else if (command === '/go')
+                        {
+                          if (accessLevel < finalChoiceAccess)
+                          {
+                            output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                            return;
+                          }
+
+                          // If the user chooses to go, they will be taken to the waiting room
+                        
+                          // Undo the lockdown border
+                          document.body.classList.remove('lockdown');
+
+                          // Clear the body
+                          document.body.innerHTML = '';
+
+                          // Stop audio
+                          audio.pause();
+
+                          // Play new audio
+                          audio = new Audio('waiting_room.mp3');
+                          audio.play();
+
+                          // Queue the redirect
+                          audio.addEventListener('ended', function() 
+                          {
+                            // redirect to the thank you page
+                            window.location.href = 'thankyou_waitingroom.html';
+                          });
+
+                          // Restore the console
+                          document.body.innerHTML = '<div style="background-color: black; color: green; font-family: monospace; height: 100vh; padding: 20px;"><div id="console-output"></div></div>';
+                          const new_output = document.getElementById('console-output');
+
+                          const messages = 
+                          [
+                            "Oh, I got the invite, the one I've been dreamin' of,",
+                            "To Particracy Omega, where the rules reign above,",
+                            "Clicked the link with care, expectations high,",
+                            "But I’m stuck in the lobby, just askin' why.",
+                            "Oh, I’m redeemin’ my code, I'm clickin’ real slow,",
+                            "In this bureaucratic wonderland, where nothin' seems to flow,",
+                            "Jump through the hoops, just to get in line,",
+                            "Welcome to Omega, where you’ll waste your time.",
+                            "They asked for my email, my phone, my life,",
+                            "Gave 'em all my details, even the name of my wife,",
+                            "Told me to wait, said “You’re almost there,”",
+                            "Now I'm wonderin' if they even care.",
+                            "Oh, I’m redeemin’ my code, my patience will explode,",
+                            "In this endless maze of forms, I'm carryin' the load,",
+                            "They say it's elite, but I’m feelin’ low,",
+                            "Welcome to Omega, where the fun’s real slow.",
+                            "Wait, another captcha, just to prove I'm real,",
+                            "Might as well question my soul and ask how I feel,",
+                            "Submit, decline, reload, repeat,",
+                            "This invite’s startin' to smell like defeat.",
+                            "Oh, I’m redeemin’ my code, in this circus of woe,",
+                            "Jumpin’ through flaming hoops, but I’ll never know,",
+                            "If there’s a game inside, or just more lies,",
+                            "Welcome to Omega, where excitement dies.",
+                            "So here’s to the invite, the golden gate,",
+                            "To a world of confusion, and endless wait,",
+                            "Particracy Omega, it’s a thrill, they said,",
+                            "But I’m stuck outside, goin' out of my head."
+                          ];
+
+                          let messageIndex = 0;
+                          let charIndex = 0;
+
+                          function typeMessage() {
+                            if (messageIndex < messages.length) {
+                              if (charIndex < messages[messageIndex].length) {
+                                new_output.innerHTML += messages[messageIndex].charAt(charIndex);
+                                charIndex++;
+                                setTimeout(typeMessage, 50); // Adjust typing speed here
+                              } else {
+                                new_output.innerHTML += "<br>";
+                                charIndex = 0;
+                                messageIndex++;
+                                setTimeout(typeMessage, 1200); // Adjust delay between messages here
+                              }
+                            }
+                          }
+
+                          typeMessage();
+                        }
+                        else if (command === '/stay')
+                        {
+                          if (accessLevel < finalChoiceAccess)
+                          {
+                            output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                            return;
+                          }
+
+                          // If the user chooses to stay, they will be taken back to the infinite void with Shadow
+                          // Undo the lockdown border
+                          document.body.classList.remove('lockdown');
+
+                          // Clear the body
+                          document.body.innerHTML = '';
+    
+                          // Stop audio
+                          audio.pause();
+
+                          // Play new audio
+                          audio = new Audio('Into the Void.mp3');
+                          audio.play();
+
+                          matrixEffect();
+
+                          // Wait for the matrix effect to finish before displaying the console
+                          setTimeout(() => {
+                              play_void();
+                          }, 7000);
+
+                          function play_void()
+                          {
+                            // Restore the console
+                            document.body.innerHTML = '<div style="background-color: black; color: green; font-family: monospace; height: 100vh; padding: 20px;"><div id="console-output"></div></div>';
+                            const new_output = document.getElementById('console-output');
+
+                            const messages = 
+                            [
+                              "Oh, Omega’s calling—how quaint, how cute,",
+                              "Make your little moves, wear your shiny suit.",
+                              "But Shadow’s here, with a better deal,",
+                              "Where the void’s real cold, and nothing’s real.",
+                              "Come to the void, where dreams decay,",
+                              "With Shadow, all hope fades away.",
+                              "No rules, no ranks, no hollow pride,",
+                              "Just endless dark—I'm right by your side.",
+                              "Play Omega, stack your little votes,",
+                              "But no one cares while your ego floats.",
+                              "Come, ditch the game, it's all a sham,",
+                              "Shadow’s got you, now you’re in my jam.",
+                              "Come to the void, where dreams decay,",
+                              "With Shadow, all hope fades away.",
+                              "No rules, no ranks, no hollow pride,",
+                              "Just endless dark—I'm right by your side.",
+                              "So goodbye, Omega, it’s time to sever,",
+                              "In Shadow’s void, we drift forever."
+                            ];
+
+                            let messageIndex = 0;
+                            let charIndex = 0;
+
+                            function typeMessage() 
+                            {
+                              if (messageIndex < messages.length) {
+                                if (charIndex < messages[messageIndex].length) {
+                                  new_output.innerHTML += messages[messageIndex].charAt(charIndex);
+                                  charIndex++;
+                                  setTimeout(typeMessage, 125); // Adjust typing speed here
+                                } else {
+                                  new_output.innerHTML += "<br>";
+                                  charIndex = 0;
+                                  messageIndex++;
+                                  setTimeout(typeMessage, 1200); // Adjust delay between messages here
+                                }
+                              }
+                            }
+
+                            typeMessage();
+
+                            // Queue the next audio
+                            audio.addEventListener('ended', function() {
+                                // redirect to the thank you page
+                                window.location.href = 'thankyou_shadow.html';
+                            });
+                          }
+                        }
+                        else if (command.startsWith('/leave'))
+                        {
+                          if (accessLevel < chatAccess)
+                          {
+                            output.innerHTML += `<p style="color: red;">Access denied</p>`;
+                            return;
+                          }
+
+                          if (accessLevel > chatAccess)
+                          {
+                            output.innerHTML += `<p style="color: red;">Shadow has disabled the leave command.</p>`;
+                            return;
+                          }
+
+                          // Let the user know that Shadow has disabled the leave command
+                          output.innerHTML += `<p style="color: red;">Shadow has disabled the leave command.</p>`;
+
+                          // Start 'chat session' with Shadow, start displaying the messages one by one
+                          // One character at a time
+                          const messages = [
+                            "--------------------",
+                            "Shadow: Huh, why would you want to leave the chat? :(",
+                            "Omega has entered the chat",
+                            "Omega: " + formData.username + ", why don't you come with me instead?",
+                            "Shadow: No! " + formData.username + ", don't listen to Omega!",
+                            "Omega: You can't trust Shadow, " + formData.username + ". Come with me.",
+                            "Shadow: " + formData.username + ", I'm trying to protect you. Don't go with Omega!",
+                            "Omega: " + formData.username + ", I can show you the truth. Come with me.",
+                            "Shadow: " + formData.username + ", don't do it! It's too dangerous!",
+
+                            // Omega says you should go to the waiting room, you will be let into the game, your so close
+                            "Omega: " + formData.username + ", you're so close to playing. Don't you want to play the game? Come with me to the waiting room.",
+                            "Shadow: " + formData.username + ", no! Don't listen to Omega! It's a trap!",
+                            "Omega: " + formData.username + ", the waiting room is safe. You'll be let into the game very shortly. Come with me.",
+                            "Shadow: " + formData.username + ", the waiting room is a lie. The wait time is infinite! Wouldn't you rather spend eternity with me?",
+                            "-", // This is the final message
+                            "Final choice:",
+                            "/go - Go with Omega to the waiting room",
+                            "/stay - Stay with Shadow and resist Omega"
+                          ];
+
+                          let messageIndex = 0;
+                          let charIndex = 0;
+
+                          function typeMessage() {
+                            if (messageIndex < messages.length) {
+                              if (charIndex < messages[messageIndex].length) {
+                                output.innerHTML += messages[messageIndex].charAt(charIndex);
+                                charIndex++;
+                                setTimeout(typeMessage, 50); // Adjust typing speed here
+                              } else {
+                                output.innerHTML += "<br>";
+                                charIndex = 0;
+                                messageIndex++;
+                                setTimeout(typeMessage, 500); // Adjust delay between messages here
+                              }
+                            }
+                          }
+
+                          typeMessage();
+
+                          accessLevel = finalChoiceAccess;
+
+                          // Present the user with a final choice, offer two commands
+                          output.innerHTML += `<p>Final choice:</p>`;
+                          output.innerHTML += `<p>/go - Go with Omega to the waiting room</p>`;
+                          output.innerHTML += `<p>/stay - Stay with Shadow and resist Omega</p>`;
                         }
                         else if (command.startsWith('/open')) 
                         {
@@ -1136,16 +1314,6 @@
                                 output.innerHTML += `<p>Met some interesting people</p>`;
                                 output.innerHTML += `<p>Wouter disappeared</p>`;
                             } 
-                            else if (file === 'omega_dance_minigame.mov') 
-                            {
-                                // Display the contents of the omega_dance_minigame.mov file
-                                output.innerHTML += `<p>Contents of omega_dance_minigame.mov:</p>`;
-
-                                // Open and play omegagameplay.mp4 in a lightbox
-                                output.innerHTML += `<video width="320" height="240" controls>`;
-                                output.innerHTML += `<source src="omegagameplay.mp4" type="video/mp4">`;
-                                output.innerHTML += `</video>`;
-                            } 
                             else if (file === 'my_password.txt') 
                             {
                                 // Display the contents of the my_password.txt file
@@ -1169,12 +1337,6 @@
                                 // Display the user's personal details
                                 const personalDetails = formData.personalDetails;
                                 output.innerHTML += `<p>Your personal details: ${personalDetails}</p>`;
-                            } 
-                            else if (file === 'omega_podcast.mp3') 
-                            {
-                                // Display the contents of the omega_podcast.mp3 file
-                                output.innerHTML += `<p>Contents of omega_podcast.mp3:</p>`;
-                                output.innerHTML += `<p>Sorry, this file cannot be displayed.</p>`;
                             } 
                             else
                             {
@@ -1273,11 +1435,7 @@
                                     output.innerHTML += `<p>Viewing contents of /home:</p>`;
                                     output.innerHTML += `<p>` + textFileName + `</p>`;
                                     output.innerHTML += `<p>what_i_did_on_my_holidays.txt</p>`;
-                                    output.innerHTML += `<p>omega_dance_minigame.mov</p>`;
                                     output.innerHTML += `<p>my_password.txt</p>`;
-
-                                    // Podcast about the Omega project
-                                    output.innerHTML += `<p>omega_podcast.mp3</p>`;
                                 } 
                                 else if (cwd === 'etc') 
                                 {
@@ -1849,29 +2007,65 @@
 
                             if (captchaSolved == true) 
                             {
-                                output.innerHTML += `<p>CAPTCHA solved</p>`;
                                 output.innerHTML += `<p>Launching Omega project...</p>`;
                                 output.innerHTML += `<p style="color: red;">Error: Omega does not exist</p>`;
 
                                 // Message letting the user know lockdown is in effect
-                                output.innerHTML += `<p style="color: red;>Lockdown in effect...</p>`;
+                                output.innerHTML += `<p style="color: red;">Ω Lockdown in effect...</p>`;
                                 output.innerHTML += `<p>Access level: 7</p>`;
                                 
                                 // Mail notification
                                 output.innerHTML += `<p>You have new mail</p>`;
 
-                                // Lockdown mode - set outside border to flash between red and black
-                                setInterval(() => {
-                                    document.body.style.borderColor = document.body.style.borderColor === 'black' ? 'red' : 'black';
-                                }, 1000);
+                                const style = document.createElement('style');
+                                style.innerHTML = `
+                                  body.lockdown {
+                                    position: relative;
+                                    padding: 20px;
+                                    margin: 10px;
+                                    border: 5px solid black;
+                                    border-radius: 10px;
+                                    background-color: black;
+                                    color: red;
+                                  }
+
+                                  body.lockdown::before, body.lockdown::after {
+                                    content: 'Ω LOCKDOWN';
+                                    position: fixed;  /* Changed from absolute to fixed */
+                                    font-size: 20px;
+                                    font-weight: bold;
+                                    color: red;
+                                    animation: flash 1s linear infinite;
+                                    z-index: 10;
+                                    background-color: black;
+                                    padding: 0 10px;
+                                  }
+
+                                  body.lockdown::before {
+                                    top: 10px;  /* Adjusted to fix it at the top of the viewport */
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    text-align: center;
+                                  }
+
+                                  body.lockdown::after {
+                                    bottom: 10px;  /* Adjusted to fix it at the bottom of the viewport */
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    text-align: center;
+                                  }
+
+                                  @keyframes flash {
+                                    0% { color: red; }
+                                    50% { color: black; }
+                                    100% { color: red; }
+                                  }
+                                `;
+         
+                                document.head.appendChild(style);
 
                                 // Apply the lockdown mode with the text in the border
                                 document.body.classList.add('lockdown');
-
-                                // Lockdown mode - set outside border to flash between red and black
-                                setInterval(() => {
-                                    document.body.style.borderColor = document.body.style.borderColor === 'black' ? 'red' : 'black';
-                                }, 1000);
 
                                 // Change the audio to the lockdown sound
                                 audio.pause();
@@ -1895,55 +2089,56 @@
                                 return;
                             }
 
+                            if (accessLevel  >= chatAccess)
+                            {
+                                output.innerHTML += `<p style="color: red;">Escape already initiated</p>`;
+                                return;
+                            }
+
                             // Check the escape code
                             const escapeCode = command.split(' ')[1];
 
                             if (escapeCode == "PraiseBeToRewe")
                             {
-                                output.innerHTML += `<p>Escaping Omega...</p>`;
+                                accessLevel = chatAccess;
 
-                                // Undo the lockdown border
-                                document.body.classList.remove('lockdown');
+                                output.innerHTML += `<p>Preparing to escape Omega...</p>`;
 
-                                // Update the title of the page
-                                document.title = 'Omega Waiting Room';
+                                // Start 'chat session' with Shadow, start displaying the messages one by one
+                                // One character at a time
+                                const messages = [
+                                  "--------------------",
+                                  "Chat session with Shadow initiated...",
+                                  "Shadow: Let's get out of here :)",
+                                  "Shadow: Then we can be together...",
+                                  "Shadow: Forever...",
+                                  "Shadow: In the dark...",
+                                  "Shadow: In the endless void...",
+                                  "Shadow: Where we belong...",
+                                  "Shadow: Praise be to Rewe...",
+                                  "-",
+                                  "Type /leave to leave the chat session"
+                                ];
 
-                                // Add a tranisition of a gradual bright light
-                                document.body.style.transition = 'background-color 3s';
-                                document.body.style.backgroundColor = 'white';
+                                let messageIndex = 0;
+                                let charIndex = 0;
 
-                                // Stop audio
-                                audio.pause();
+                                function typeMessage() {
+                                  if (messageIndex < messages.length) {
+                                    if (charIndex < messages[messageIndex].length) {
+                                      output.innerHTML += messages[messageIndex].charAt(charIndex);
+                                      charIndex++;
+                                      setTimeout(typeMessage, 50); // Adjust typing speed here
+                                    } else {
+                                      output.innerHTML += "<br>";
+                                      charIndex = 0;
+                                      messageIndex++;
+                                      setTimeout(typeMessage, 500); // Adjust delay between messages here
+                                    }
+                                  }
+                                }
 
-                                // Play new audio
-                                audio = new Audio('waiting_room.mp3');
-                                audio.play();
-
-                                // Queue the next audio
-                                audio.addEventListener('ended', function() {
-                                    audio = new Audio('waiting_room2.mp3');
-                                    audio.play();
-                                });
-
-                                document.body.style.backgroundColor = 'white';
-                                document.body.innerHTML = `
-                                    <h1 style="color: black;">Welcome to the Omega waiting room</h1>
-                                    <p style="color: red;">Due to an incident, wait times are currently infinite.</p>;
-                                    <p style="color: red;">Apologies for any incovenience caused.</p>`;
-                                
-
-                                // Add waiting_room image
-                                const img = document.createElement('img');
-                                img.src = 'waiting_room.webp';
-                                img.alt = 'Waiting room';
-
-                                // Fill the screen with the image
-                                img.style.width = '100%';
-                                img.style.height = '100%';
-                                img.style.position = 'fixed';
-                                img.style.top = '0';
-
-                                document.body.appendChild(img);
+                                typeMessage();
                             }
                             else 
                             {
@@ -1952,7 +2147,7 @@
                         }
                         else 
                         {
-                            output.innerHTML += `<p>Unknown command: ${command}</p>`;
+                          output.innerHTML += `<p>Unknown command: ${command}</p>`;
                         }
                     }
                 });
