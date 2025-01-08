@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Wouter back yet?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <link rel="shortcut icon" type="image/x-icon" href="logo-64x64.png">
+</head>
+<body>
+    <h1>Is Wouter back yet?</h1>
+    <img src="./wouter.png" alt="Wouter">
+    <div id="message"></div>
+    <script>
+        function getDaysUntilMonday() {
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            const daysUntilMonday = (8 - dayOfWeek) % 7;
+            return daysUntilMonday;
+        }
+
+        function updateMessage() {
+            const daysUntilMonday = getDaysUntilMonday();
+            const messageDiv = document.getElementById('message');
+            if (daysUntilMonday === 0) {
+                messageDiv.innerText = "Yes, it's Monday. Wouter is back!";
+
+                // Also update the hop on link text
+                const link = document.getElementById('particracy-link');
+                link.innerText = "Hop on Particracy Omega!";
+            } else {
+                messageDiv.innerText = `No, Wouter will be back on Monday. ${daysUntilMonday} day(s) left until Monday.`;
+            }
+        }
+
+        const link = document.createElement('a');
+        link.id = "particracy-link";
+        link.href = "omega_code.html";
+        link.innerText = "In the meantime, why not hop on Particracy Omega?";
+        const paragraph = document.createElement('p');
+        paragraph.appendChild(link);
+        document.body.appendChild(paragraph);
+
+        updateMessage();
+    </script>
+</body>
+</html>
+<script>
+    function toggleDarkTheme() {
+        document.body.classList.toggle('dark-theme');
+    }
+
+    function addLinkIfWouterIsBack() {
+        const daysUntilMonday = getDaysUntilMonday();
+        if (daysUntilMonday === 0) {
+            const link = document.createElement('a');
+            link.href = "#";
+            link.onclick = function() {
+                toggleDarkTheme();
+                const errorMessageDiv = document.createElement('div');
+                errorMessageDiv.innerText = "Error: Wouter does not exist (Error Code: rejhfw)";
+                errorMessageDiv.style.color = "red";
+                document.body.appendChild(errorMessageDiv);
+                const img = document.querySelector('img');
+                const originalWidth = img.width;
+                const originalHeight = img.height;
+                img.src = "./dark_wouter.png";
+                img.width = originalWidth;
+                img.height = originalHeight;
+                
+                // Play error sound
+                const audio = new Audio('error.ogg');
+                audio.play();
+                
+                // Remove the link
+                link.remove();
+                
+                return false;
+            };
+            link.innerText = "Click here for your exclusive Particracy Omega Invite Code!";
+            document.body.appendChild(link);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', addLinkIfWouterIsBack);
+</script>
+<style>
+    .dark-theme {
+        background-color: #333;
+        color: #fff;
+    }
+</style>
