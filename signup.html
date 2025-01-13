@@ -1690,14 +1690,14 @@
                             {
                                 if (accountAlreadyWithdrawn) 
                                 {
-                                    output.innerHTML += `<p style="color: red;">Account 'Fulc' has been shut due to suspicious activity.</p>`;
+                                    output.innerHTML += `<p style="color: red;">Account 'fulc' has been shut due to suspicious activity.</p>`;
                                     return;
                                 }
 
                                 accountAlreadyWithdrawn = true;
 
-                                output.innerHTML += `<p>Withdrawing Particrabucks from account 'Fulc'...</p>`;
-                                output.innerHTML += `<p style="color: red;">Warning: Account 'Fulc' is under investigation</p>`;
+                                output.innerHTML += `<p>Withdrawing Particrabucks from account 'fulc'...</p>`;
+                                output.innerHTML += `<p style="color: red;">Warning: Account 'fulc' is under investigation</p>`;
 
                                 // Set the user's wallet balance to 5000
                                 output.innerHTML += `<p>Particrabucks withdrawn: 5000</p>`;
@@ -1926,10 +1926,10 @@
 
                                 if (accessLevel >= bankAccess) 
                                 {
-                                    // Message informing the user about a suspect account, labelled 'Fulc', that appears to be involved in massive tax evasion
+                                    // Message informing the user about a suspect account, labelled 'fulc', that appears to be involved in massive tax evasion
                                     output.innerHTML += '<p>From: ProphetBuro HR</p>';
-                                    output.innerHTML += `<p>Subject: Fulc</p>`;
-                                    output.innerHTML += `<p>Message: We have identified a suspect account, labelled 'Fulc', that appears to be involved in massive tax evasion. Investigate this account and report your findings to John Stadius immediately.</p>`;
+                                    output.innerHTML += `<p>Subject: Suspect Account</p>`;
+                                    output.innerHTML += `<p>Message: We have identified a suspect account, labelled 'fulc', that appears to be involved in massive tax evasion. Investigate this account and report your findings to John Stadius immediately.</p>`;
 
                                     // Add a dash to separate the messages
                                     output.innerHTML += `<p>--------------------</p>`;
